@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Héctor Pool García — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─── VARIABLES ──────────────────────────────────────────────────────── */
+:root {
+  --bg:             #0d0e0f;
+  --bg2:            #141517;
+  --bg3:            #1c1e21;
+  --surface:        #212326;
+  --border:         rgba(255,255,255,0.07);
+  --border-active:  rgba(255,255,255,0.18);
+  --text:           #eceae4;
+  --text-muted:     #8a877f;
+  --text-dim:       #555450;
+  --accent:         #c8b89a;
+  --accent2:        #7b9e87;
+  --accent3:        #6b8cae;
+  --red:            #c07070;       /* China section accent */
+  --tag-bg:         rgba(200,184,154,0.08);
+  --tag-border:     rgba(200,184,154,0.2);
+  --radius-sm:      3px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(13,14,15,0.88);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 300;
+  letter-spacing: 0.08em; color: var(--accent); text-decoration: none;
+}
+
+.nav-right { display: flex; align-items: center; gap: 0; }
+
+.nav-links { display: flex; gap: 0.1rem; align-items: center; }
+
+.nav-links a {
+  font-size: 0.75rem; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted); text-decoration: none;
+  padding: 0.4rem 0.8rem; border-radius: 2rem;
+  transition: color 0.25s, background 0.25s;
+}
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+
+/* Language toggle */
+.lang-toggle {
+  display: flex; border: 0.5px solid var(--border-active);
+  border-radius: 2rem; overflow: hidden; margin-left: 1.25rem;
+}
+.lang-btn {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.04em; color: var(--text-muted);
+  background: transparent; border: none;
+  padding: 0.35rem 0.85rem; cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.lang-btn.active { color: var(--bg); background: var(--accent); }
+
+/* ─── HERO ───────────────────────────────────────────────────────────── */
+#hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 8rem 2.5rem 5rem; overflow: hidden;
+}
+.hero-grid-line { position: absolute; background: var(--border); }
+.hero-grid-line.v { width: 0.5px; top: 0; bottom: 0; }
+.hero-grid-line.h { height: 0.5px; left: 0; right: 0; }
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2);
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300;
+  line-height: 0.95; letter-spacing: -0.01em; color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.9s 0.35s forwards;
+}
+.hero-name em { font-style: italic; color: var(--accent); }
+.hero-tagline {
+  font-size: 1rem; font-weight: 300; color: var(--text-muted);
+  max-width: 480px; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.9s 0.65s forwards;
+}
+
+.btn-primary {
+  font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent); border: none;
+  padding: 0.85rem 2rem; cursor: pointer; text-decoration: none;
+  border-radius: 0; transition: background 0.25s, transform 0.2s;
+}
+.btn-primary:hover { background: #d6c9b0; transform: translateY(-1px); }
+
+.btn-ghost {
+  font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted); background: transparent;
+  border: 0.5px solid var(--border-active);
+  padding: 0.85rem 2rem; border-radius: 0; cursor: pointer;
+  text-decoration: none; transition: color 0.25s, border-color 0.25s, transform 0.2s;
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--text-muted); transform: translateY(-1px); }
+
+.hero-scroll-hint {
+  position: absolute; bottom: 2rem; right: 2.5rem;
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.1em; color: var(--text-dim);
+  writing-mode: vertical-rl;
+  display: flex; align-items: center; gap: 0.75rem;
+  opacity: 0; animation: fadeIn 1s 1.2s forwards;
+}
+.hero-scroll-hint::before {
+  content: ''; display: block; width: 0.5px; height: 40px;
+  background: var(--text-dim);
+  animation: lineGrow 1.5s 1.5s ease forwards;
+  transform-origin: top; transform: scaleY(0);
+}
+
+/* ─── SECTIONS ───────────────────────────────────────────────────────── */
+section {
+  position: relative; padding: 6rem 2.5rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.section-label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 3.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 0.5px;
+  background: var(--border); max-width: 80px;
+}
+.full-divider { height: 0.5px; background: var(--border); margin: 0; }
+
+/* ─── ABOUT ──────────────────────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start;
+}
+.about-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem; font-weight: 300; line-height: 1.15;
+  color: var(--text); margin-bottom: 1.5rem;
+}
+.about-text h2 em { font-style: italic; color: var(--accent); }
+.about-text p { color: var(--text-muted); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+.about-stats { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; }
+.stat-item { border-top: 0.5px solid var(--border); padding-top: 1.25rem; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.25rem;
+}
+.stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.03em; }
+
+/* ─── EXPERIENCE ─────────────────────────────────────────────────────── */
+.exp-container { max-width: 800px; }
+.exp-item {
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: 2.5rem; padding: 2.5rem 0;
+  border-top: 0.5px solid var(--border);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.exp-item.visible { opacity: 1; transform: translateY(0); }
+.exp-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-dim); padding-top: 0.2rem; }
+.exp-role { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--text); margin-bottom: 0.2rem; }
+.exp-org { font-size: 0.82rem; font-weight: 400; color: var(--accent2); letter-spacing: 0.03em; margin-bottom: 0.75rem; }
+.exp-desc { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); line-height: 1.75; }
+.exp-desc li { margin-bottom: 0.3rem; margin-left: 1rem; }
+
+/* ─── SKILLS ─────────────────────────────────────────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; border: 0.5px solid var(--border); }
+.skill-card { padding: 2rem; background: var(--bg2); transition: background 0.25s; }
+.skill-card:hover { background: var(--bg3); }
+.skill-card-icon { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem; }
+.skill-card h3 { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 0.75rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.04em; color: var(--accent); background: var(--tag-bg); border: 0.5px solid var(--tag-border); padding: 0.25rem 0.65rem; border-radius: 2rem; }
+
+/* ─── LANGUAGES ──────────────────────────────────────────────────────── */
+.lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.lang-card { background: var(--bg2); border: 0.5px solid var(--border); padding: 2rem; position: relative; overflow: hidden; }
+.lang-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 2px; height: 100%; background: var(--accent);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lang-card:hover::before { transform: scaleY(1); }
+.lang-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--text); margin-bottom: 0.25rem; }
+.lang-level { font-size: 0.78rem; color: var(--accent2); margin-bottom: 1rem; }
+.lang-bar-bg { height: 1px; background: var(--border); margin-bottom: 0.5rem; }
+.lang-bar { height: 1px; background: var(--accent); margin-top: -1px; width: 0; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* ─── PHOTO GALLERY ──────────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.gallery-item {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  cursor: pointer;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.gallery-item.visible { opacity: 1; transform: translateY(0); }
+
+.gallery-img-wrap {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+}
+.gallery-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), filter 0.4s;
+  filter: grayscale(20%);
+}
+.gallery-item:hover .gallery-img-wrap img { transform: scale(1.06); filter: grayscale(0%); }
+
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: rgba(13,14,15,0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon { font-size: 1.4rem; color: var(--accent); }
+
+.gallery-caption {
+  font-family: 'DM Mono', monospace; font-size: 0.64rem;
+  letter-spacing: 0.04em; color: var(--text-muted);
+  line-height: 1.5; padding: 0 0.1rem;
+}
+.gallery-num {
+  display: block; color: var(--text-dim); margin-bottom: 0.15rem; font-size: 0.6rem;
+}
+
+/* ─── CHINA SECTION ──────────────────────────────────────────────────── */
+.china-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: start; margin-bottom: 4rem;
+}
+.china-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 300; line-height: 1.15;
+  color: var(--text); margin-bottom: 1.25rem;
+}
+.china-text h2 em { font-style: italic; color: var(--red); }
+.china-text p { color: var(--text-muted); font-weight: 300; font-size: 0.95rem; margin-bottom: 0.9rem; }
+
+.china-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.china-badge {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em;
+  color: var(--red); background: rgba(192,112,112,0.08);
+  border: 0.5px solid rgba(192,112,112,0.25);
+  padding: 0.3rem 0.75rem; border-radius: 2rem;
+}
+
+.china-char {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 12vw, 10rem); font-weight: 300;
+  color: rgba(192,112,112,0.12); line-height: 1;
+  letter-spacing: -0.02em; user-select: none;
+  text-align: right; padding-top: 0.5rem;
+}
+
+/* Letters gallery (7 images) */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.letter-item {
+  cursor: pointer;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.letter-item.visible { opacity: 1; transform: translateY(0); }
+.letter-img-wrap {
+  position: relative; overflow: hidden;
+  aspect-ratio: 3/4; background: var(--bg3);
+  border: 0.5px solid rgba(192,112,112,0.15);
+}
+.letter-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s, filter 0.4s; filter: grayscale(30%);
+}
+.letter-item:hover .letter-img-wrap img { transform: scale(1.05); filter: grayscale(0%); }
+.letter-overlay {
+  position: absolute; inset: 0; background: rgba(13,14,15,0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.letter-item:hover .letter-overlay { opacity: 1; }
+
+.letter-label {
+  font-family: 'DM Mono', monospace; font-size: 0.64rem;
+  letter-spacing: 0.04em; color: var(--text-dim);
+  margin-top: 0.5rem; padding: 0 0.1rem;
+}
+
+/* ─── DOWNLOADS / CV ─────────────────────────────────────────────────── */
+.downloads-tabs {
+  display: flex; gap: 0; border: 0.5px solid var(--border);
+  border-radius: 0; width: fit-content; margin-bottom: 2.5rem; overflow: hidden;
+}
+.dl-tab {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.6rem 1.4rem; cursor: pointer;
+  background: transparent; border: none;
+  color: var(--text-muted); transition: color 0.2s, background 0.2s;
+}
+.dl-tab.active { color: var(--bg); background: var(--accent); }
+
+.dl-panel { display: none; }
+.dl-panel.active { display: block; }
+
+.cv-intro { margin-bottom: 2.5rem; }
+.cv-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 300; color: var(--text);
+  margin-bottom: 0.75rem; line-height: 1.15;
+}
+.cv-heading em { font-style: italic; color: var(--accent); }
+.cv-subheading { font-size: 0.9rem; font-weight: 300; color: var(--text-muted); max-width: 580px; }
+
+.cv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.cv-card {
+  background: var(--bg2); border: 0.5px solid var(--border);
+  padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
+  transition: border-color 0.25s;
+}
+.cv-card:hover { border-color: var(--border-active); }
+.cv-card-featured { border-color: rgba(200,184,154,0.25); }
+.cv-card-featured:hover { border-color: rgba(200,184,154,0.5); }
+
+.cv-card-lang {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em;
+  color: var(--accent); background: var(--tag-bg); border: 0.5px solid var(--tag-border);
+  display: inline-block; padding: 0.2rem 0.6rem; border-radius: 2rem; width: fit-content;
+}
+.cv-card-body { flex: 1; }
+.cv-card-type { font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 0.4rem; }
+.cv-card-desc { font-size: 0.83rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+
+.cv-download-btn {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted); background: transparent;
+  border: 0.5px solid var(--border-active);
+  padding: 0.7rem 1.25rem; text-decoration: none;
+  transition: color 0.25s, border-color 0.25s, transform 0.2s; width: fit-content;
+}
+.cv-download-btn:hover { color: var(--text); border-color: var(--text-muted); transform: translateY(-1px); }
+.cv-download-btn-accent { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.cv-download-btn-accent:hover { background: #d6c9b0; border-color: #d6c9b0; color: var(--bg); }
+.cv-btn-icon { font-size: 0.9rem; line-height: 1; }
+.cv-note { margin-top: 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em; color: var(--text-dim); }
+.cv-note code { color: var(--accent2); background: rgba(123,158,135,0.08); padding: 0.1rem 0.4rem; border-radius: 3px; }
+
+/* Recommendation letters download grid */
+.rec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.rec-card {
+  background: var(--bg2); border: 0.5px solid var(--border);
+  padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem;
+  transition: border-color 0.25s;
+}
+.rec-card:hover { border-color: var(--border-active); }
+.rec-card-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; color: var(--text-dim); }
+.rec-card-title { font-size: 0.92rem; font-weight: 500; color: var(--text); }
+.rec-card-org { font-size: 0.8rem; color: var(--accent2); font-weight: 300; }
+
+/* ─── CONTACT ────────────────────────────────────────────────────────── */
+.contact-inner {
+  text-align: center; padding: 4rem 2rem;
+  border: 0.5px solid var(--border); background: var(--bg2);
+}
+.contact-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--text); margin-bottom: 0.75rem; }
+.contact-inner h2 em { font-style: italic; color: var(--accent); }
+.contact-inner p { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; margin-bottom: 2.5rem; }
+.contact-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.contact-link {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--text-muted); text-decoration: none;
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  transition: color 0.25s;
+}
+.contact-link:hover { color: var(--accent); }
+.contact-link-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
+footer {
+  border-top: 0.5px solid var(--border); padding: 1.5rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-dim); }
+
+/* ─── LIGHTBOX ───────────────────────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(10,10,11,0.95);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-inner { position: relative; max-width: 90vw; max-height: 90vh; }
+.lightbox-inner img { max-width: 88vw; max-height: 85vh; object-fit: contain; display: block; border: 0.5px solid var(--border); }
+.lightbox-caption {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--text-muted); text-align: center; margin-top: 1rem;
+}
+.lightbox-close {
+  position: absolute; top: -2.5rem; right: 0;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 1.4rem; cursor: pointer; padding: 0.25rem 0.5rem;
+  transition: color 0.2s; line-height: 1;
+}
+.lightbox-close:hover { color: var(--text); }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: 0.5px solid var(--border-active);
+  color: var(--text-muted); font-size: 1rem; cursor: pointer;
+  padding: 0.6rem 0.9rem; transition: color 0.2s, background 0.2s;
+}
+.lightbox-nav:hover { color: var(--text); background: var(--surface); }
+.lightbox-prev { right: calc(100% + 1rem); }
+.lightbox-next { left:  calc(100% + 1rem); }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lineGrow { to { transform: scaleY(1); } }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .gallery-grid    { grid-template-columns: repeat(3, 1fr); }
+  .letters-grid    { grid-template-columns: repeat(3, 1fr); }
+  .china-intro     { grid-template-columns: 1fr; }
+  .china-char      { text-align: left; font-size: 5rem; }
+  .rec-grid        { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links a { display: none; }
+  #hero { padding: 7rem 1.5rem 4rem; }
+  .about-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
+  .lang-grid       { grid-template-columns: 1fr; }
+  .exp-item        { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cv-grid         { grid-template-columns: 1fr; }
+  .gallery-grid    { grid-template-columns: repeat(2, 1fr); }
+  .letters-grid    { grid-template-columns: repeat(2, 1fr); }
+  .rec-grid        { grid-template-columns: 1fr; }
+  section          { padding: 4rem 1.5rem; }
+  .lightbox-prev, .lightbox-next { display: none; }
+}
+@media (max-width: 480px) {
+  .gallery-grid  { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .letters-grid  { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── LIGHTBOX ─────────────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev">←</button>
+    <img id="lb-img" src="" alt=""/>
+    <button class="lightbox-nav lightbox-next" id="lb-next">→</button>
+    <p class="lightbox-caption" id="lb-caption"></p>
+  </div>
+</div>
+
+<!-- ── NAV ──────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#hero" class="nav-brand">HJPG</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about"      data-i18n="nav-about">Sobre mí</a>
+      <a href="#experience" data-i18n="nav-exp">Experiencia</a>
+      <a href="#skills"     data-i18n="nav-skills">Habilidades</a>
+      <a href="#gallery"    data-i18n="nav-gallery">Galería</a>
+      <a href="#china"      data-i18n="nav-china">China</a>
+      <a href="#downloads"  data-i18n="nav-downloads">CV</a>
+      <a href="#contact"    data-i18n="nav-contact">Contacto</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-grid-line v" style="left:20%"></div>
+  <div class="hero-grid-line v" style="left:80%"></div>
+  <div class="hero-grid-line h" style="top:35%"></div>
+
+  <p class="hero-eyebrow" data-i18n="hero-eyebrow">Mérida, Yucatán · QFB · Investigación · Idiomas</p>
+  <h1 class="hero-name"><em>Héctor J.</em><br>Pool García</h1>
+  <p class="hero-tagline" data-i18n="hero-tagline">
+    Estudiante de Químico Farmacéutico Biólogo en la UADY con interés en investigación genómica, ciencias forenses y comunicación intercultural.
+  </p>
+  <div class="hero-cta">
+    <a href="#contact"    class="btn-primary" data-i18n="hero-cta1">Contactar</a>
+    <a href="#experience" class="btn-ghost"   data-i18n="hero-cta2">Ver experiencia</a>
+  </div>
+  <div class="hero-scroll-hint" data-i18n="scroll-hint">scroll</div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── ABOUT ────────────────────────────────────────────────────────── -->
+<section id="about">
+  <p class="section-label" data-i18n="about-label">01 — Sobre mí</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 data-i18n-html="about-h2">Ciencia, <em>idiomas</em> y pensamiento crítico</h2>
+      <p data-i18n="about-p1">Soy un estudiante de la licenciatura en Químico Farmacéutico Biólogo en la Universidad Autónoma de Yucatán, con interés genuino en la investigación científica y los métodos analíticos de laboratorio.</p>
+      <p data-i18n="about-p2">Actualmente realizo una estancia en el laboratorio de Genética del Centro de Investigaciones del Dr. Hideyo Noguchi, donde desarrollo habilidades en metodologías de investigación aplicada y documentación científica.</p>
+      <p data-i18n="about-p3">Paralelamente, trabajo de forma remota en Welocalize y cuento con un sólido nivel de chino mandarín como tercer idioma (HSK 3), lo que me permite desenvolverme en entornos académicos y profesionales internacionales.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label" data-i18n="stat1">Idiomas: español, inglés y chino mandarín</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2028</div>
+        <div class="stat-label" data-i18n="stat2">Egreso estimado de la licenciatura en QFB</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">HSK</div>
+        <div class="stat-label" data-i18n="stat3">Nivel 3/4 en proceso — Instituto Confucio UADY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── EXPERIENCE ───────────────────────────────────────────────────── -->
+<section id="experience">
+  <p class="section-label" data-i18n="exp-label">02 — Experiencia</p>
+  <div class="exp-container">
+
+    <div class="exp-item">
+      <div class="exp-date">2025 — <span data-i18n="present">Presente</span></div>
+      <div class="exp-content">
+        <div class="exp-role" data-i18n="exp1-role">Estancia corta de investigación — Laboratorio de Genética</div>
+        <div class="exp-org">Centro de Investigación Regional Dr. Hideyo Noguchi · Mérida, Yucatán</div>
+        <ul class="exp-desc">
+          <li data-i18n="exp1-li1">Participación activa en el proyecto "Evaluación de la variante de un solo nucleótido (SNV) rs2289277 en población adulta yucateca con asma y en población sana".</li>
+          <li data-i18n="exp1-li2">Desarrollo de metodologías de investigación, documentación científica y análisis de datos experimentales.</li>
+          <li data-i18n="exp1-li3">Fortalecimiento de competencias en biología molecular y pensamiento científico riguroso.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Oct – Dic 2025</div>
+      <div class="exp-content">
+        <div class="exp-role" data-i18n="exp2-role">Estancia corta de investigación — Laboratorio de Enfermedades Emergentes</div>
+        <div class="exp-org">Centro de Investigación Regional Dr. Hideyo Noguchi · Mérida, Yucatán</div>
+        <ul class="exp-desc">
+          <li data-i18n="exp2-li1">Participación en el proyecto "Detección de virus en garrapatas que afectan a la salud humana".</li>
+          <li data-i18n="exp2-li2">Evaluación de materiales científicos bajo criterios académicos predefinidos.</li>
+          <li data-i18n="exp2-li3">Fortalecimiento del razonamiento analítico y atención al detalle.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jul 2025</div>
+      <div class="exp-content">
+        <div class="exp-role" data-i18n="exp3-role">CSI Laboratory: Solving a Forensic Mystery</div>
+        <div class="exp-org">Clubes de Ciencia México · Stanford / UADY / Anáhuac</div>
+        <ul class="exp-desc">
+          <li data-i18n="exp3-li1">Programa intensivo impartido por docentes de Stanford, UADY y Universidad Anáhuac.</li>
+          <li data-i18n="exp3-li2">Análisis forense, resolución colaborativa de problemas y razonamiento científico en entorno internacional.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2024 — <span data-i18n="present">Presente</span></div>
+      <div class="exp-content">
+        <div class="exp-role" data-i18n="exp4-role">Colaborador Remoto</div>
+        <div class="exp-org">Welocalize · <span data-i18n="exp4-org">Remoto</span></div>
+        <ul class="exp-desc">
+          <li data-i18n="exp4-li1">Trabajo remoto en colaboración con equipos internacionales dentro de la empresa Welocalize.</li>
+          <li data-i18n="exp4-li2">Aplicación de habilidades lingüísticas y atención al detalle en entornos profesionales de alto estándar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2022 – 2024</div>
+      <div class="exp-content">
+        <div class="exp-role" data-i18n="exp5-role">Voluntario — Año Nuevo Chino</div>
+        <div class="exp-org">Instituto Confucio · UADY · Mérida, Yucatán</div>
+        <ul class="exp-desc">
+          <li data-i18n="exp5-li1">Apoyo en eventos culturales con enfoque en narrativa, simbolismo y comunicación intercultural.</li>
+          <li data-i18n="exp5-li2">Talleres introductorios de caligrafía china adaptados a audiencias diversas.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── SKILLS ────────────────────────────────────────────────────────── -->
+<section id="skills">
+  <p class="section-label" data-i18n="skills-label">03 — Habilidades</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">/ 01</div>
+      <h3 data-i18n="sk1-title">Ciencias Farmacéuticas</h3>
+      <div class="skill-tags">
+        <span class="tag">Química Analítica</span><span class="tag">Bioquímica</span>
+        <span class="tag">Microbiología</span><span class="tag">Técnicas de Lab.</span>
+        <span class="tag">Genética</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">/ 02</div>
+      <h3 data-i18n="sk2-title">Trabajo Remoto</h3>
+      <div class="skill-tags">
+        <span class="tag">Welocalize</span>
+        <span class="tag" data-i18n="sk2-t1">Trabajo remoto</span>
+        <span class="tag" data-i18n="sk2-t2">Atención al detalle</span>
+        <span class="tag" data-i18n="sk2-t3">Gestión del tiempo</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">/ 03</div>
+      <h3 data-i18n="sk3-title">Investigación</h3>
+      <div class="skill-tags">
+        <span class="tag">Metodología científica</span><span class="tag">Documentación</span>
+        <span class="tag">Análisis de datos</span><span class="tag">Revisión bibliográfica</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">/ 04</div>
+      <h3 data-i18n="sk4-title">Comunicación</h3>
+      <div class="skill-tags">
+        <span class="tag">Redacción académica</span><span class="tag">Comunicación intercultural</span>
+        <span class="tag">Microsoft Office</span><span class="tag">Presentaciones</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── LANGUAGES ─────────────────────────────────────────────────────── -->
+<section id="languages">
+  <p class="section-label" data-i18n="lang-label">04 — Idiomas</p>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <div class="lang-name">Español</div>
+      <div class="lang-level" data-i18n="lang-native">Nativo</div>
+      <div class="lang-bar-bg"><div class="lang-bar" data-width="100" style="width:0"></div></div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">English</div>
+      <div class="lang-level" data-i18n="lang-en-level">Avanzado / Académico</div>
+      <div class="lang-bar-bg"><div class="lang-bar" data-width="85" style="width:0"></div></div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">中文</div>
+      <div class="lang-level" data-i18n="lang-zh-level">Intermedio — HSK 3</div>
+      <div class="lang-bar-bg"><div class="lang-bar" data-width="55" style="width:0"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── GALLERY ────────────────────────────────────────────────────────
+     INSTRUCCIONES: Coloca tus imágenes en assets/gallery/
+     Nombra cada archivo: 1-photo.jpg, 2-photo.jpg, ... 16-photo.jpg
+     Edita las descripciones en el array PHOTO_CAPTIONS al final del script.
+───────────────────────────────────────────────────────────────────── -->
+<section id="gallery">
+  <p class="section-label" data-i18n="gallery-label">05 — Galería</p>
+  <p style="font-size:0.88rem;color:var(--text-muted);font-weight:300;margin-bottom:2.5rem;max-width:520px" data-i18n="gallery-sub">
+    Una selección de momentos y experiencias a lo largo de mi trayectoria académica y científica.
+  </p>
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Generated by JS from PHOTO_CAPTIONS -->
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── CHINA ──────────────────────────────────────────────────────────
+     INSTRUCCIONES: Coloca las imágenes en assets/letters/
+     Nombra cada archivo: 1-letter.jpg, 2-letter.jpg, ... 7-letter.jpg
+───────────────────────────────────────────────────────────────────── -->
+<section id="china">
+  <p class="section-label" data-i18n="china-label">06 — Aplicación a China</p>
+  <div class="china-intro">
+    <div class="china-text">
+      <h2 data-i18n-html="china-h2">Rumbo a <em>China</em></h2>
+      <p data-i18n="china-p1">Actualmente me encuentro en proceso de aplicación a programas de intercambio académico y estudio en China, con el objetivo de profundizar en mi formación científica y fortalecer mi dominio del chino mandarín en un entorno de inmersión total.</p>
+      <p data-i18n="china-p2">Esta iniciativa refleja mi compromiso con la movilidad internacional y el puente entre la ciencia y los idiomas. A continuación se presentan mis cartas de recomendación y documentos de pre-admisión, con los datos sensibles debidamente censurados.</p>
+      <div class="china-badges">
+        <span class="china-badge" data-i18n="cb1">Movilidad Internacional</span>
+        <span class="china-badge" data-i18n="cb2">Intercambio Académico</span>
+        <span class="china-badge" data-i18n="cb3">Chino Mandarín</span>
+        <span class="china-badge" data-i18n="cb4">Pre-admisión</span>
+      </div>
+    </div>
+    <div class="china-char" aria-hidden="true">中国</div>
+  </div>
+
+  <div class="letters-grid" id="letters-grid">
+    <!-- Generated by JS from LETTER_LABELS -->
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── DOWNLOADS ──────────────────────────────────────────────────────
+     INSTRUCCIONES:
+       CV en español:  assets/cv/CV_Hector_Pool_ES.pdf  /  CV_Hector_Pool_Extenso_ES.pdf
+       CV en inglés:   assets/cv/CV_Hector_Pool_EN.pdf  /  CV_Hector_Pool_Extended_EN.pdf
+       Cartas:         assets/rec/carta-1.pdf, carta-2.pdf, carta-3.pdf
+───────────────────────────────────────────────────────────────────── -->
+<section id="downloads">
+  <p class="section-label" data-i18n="dl-label">07 — Descargas</p>
+
+  <div class="downloads-tabs">
+    <button class="dl-tab active" onclick="switchTab('cv')"  data-i18n="tab-cv">Currículum</button>
+    <button class="dl-tab"        onclick="switchTab('rec')" data-i18n="tab-rec">Cartas de Recomendación</button>
+  </div>
+
+  <!-- CV panel -->
+  <div class="dl-panel active" id="panel-cv">
+    <div class="cv-intro">
+      <h2 class="cv-heading" data-i18n-html="cv-heading">Descarga mi <em>CV</em></h2>
+      <p class="cv-subheading" data-i18n="cv-sub">Disponible en ambos idiomas en formato estándar de una página, optimizado para aplicaciones académicas y convocatorias.</p>
+    </div>
+    <div class="cv-grid">
+      <!-- ES Standard -->
+      <div class="cv-card cv-card-featured">
+        <div class="cv-card-lang">ES</div>
+        <div class="cv-card-body">
+          <div class="cv-card-type" data-i18n="cv-std-title">CV Estándar</div>
+          <p class="cv-card-desc" data-i18n="cv-std-desc">Versión concisa de una página, optimizada para reclutadores y convocatorias académicas.</p>
+        </div>
+        <a href="assets/cv/CV_Hector_Pool_ES.pdf" download class="cv-download-btn cv-download-btn-accent">
+          <span class="cv-btn-icon">↓</span>
+          <span data-i18n="dl-pdf">Descargar PDF</span>
+        </a>
+      </div>
+      <!-- EN Standard -->
+      <div class="cv-card cv-card-featured">
+        <div class="cv-card-lang">EN</div>
+        <div class="cv-card-body">
+          <div class="cv-card-type" data-i18n="cv-std-title-en">Standard CV</div>
+          <p class="cv-card-desc" data-i18n="cv-std-desc-en">Concise one-page version, optimized for recruiters and academic applications.</p>
+        </div>
+        <a href="assets/cv/CV_Hector_Pool_EN.pdf" download class="cv-download-btn cv-download-btn-accent">
+          <span class="cv-btn-icon">↓</span>
+          <span data-i18n="dl-pdf">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+    <p class="cv-note" data-i18n="cv-note">* Coloca los PDF en <code>assets/cv/</code> con los nombres indicados.</p>
+  </div>
+
+  <!-- Recommendation letters panel -->
+  <div class="dl-panel" id="panel-rec">
+    <div class="cv-intro">
+      <h2 class="cv-heading" data-i18n-html="rec-heading">Carta de recomendación y <em>constancia</em></h2>
+      <p class="cv-subheading" data-i18n="rec-sub">Emitidas por investigadores y profesores que avalan mi trayectoria académica y científica. Disponibles en PDF para descarga directa.</p>
+    </div>
+    <!-- ── EDITA AQUÍ los nombres / instituciones de cada carta ── -->
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-card-num">01</div>
+        <div class="rec-card-title" data-i18n="rec1-title">Carta de Recomendación</div>
+        <div class="rec-card-org" data-i18n="rec1-org">Institución · Firmante</div>
+        <a href="assets/rec/carta-1.pdf" download class="cv-download-btn" style="margin-top:auto">
+          <span class="cv-btn-icon">↓</span>
+          <span data-i18n="dl-pdf">Descargar PDF</span>
+        </a>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-num">02</div>
+        <div class="rec-card-title" data-i18n="rec2-title">Constancia</div>
+        <div class="rec-card-org" data-i18n="rec2-org">Institución · Firmante</div>
+        <a href="assets/rec/carta-2.pdf" download class="cv-download-btn" style="margin-top:auto">
+          <span class="cv-btn-icon">↓</span>
+          <span data-i18n="dl-pdf">Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+    <p class="cv-note" data-i18n="rec-note">* Coloca los PDF en <code>assets/rec/</code> con los nombres indicados.</p>
+  </div>
+
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ── CONTACT ────────────────────────────────────────────────────────── -->
+<section id="contact">
+  <p class="section-label" data-i18n="contact-label">08 — Contacto</p>
+  <div class="contact-inner">
+    <h2 data-i18n-html="contact-h2">Hablemos <em>juntos</em></h2>
+    <p data-i18n="contact-p">¿Tienes una oportunidad de investigación, colaboración o proyecto? Me encantaría escucharte.</p>
+    <div class="contact-links">
+      <a href="mailto:hpoolgarcia@icloud.com" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        hpoolgarcia@icloud.com
+      </a>
+      <a href="tel:+529999054152" class="contact-link">
+        <span class="contact-link-label">Tel</span>
+        +52 999 905 4152
+      </a>
+      <span class="contact-link">
+        <span class="contact-link-label" data-i18n="location-label">Ubicación</span>
+        Mérida, Yucatán, México
+      </span>
+    </div>
+    <a href="mailto:hpoolgarcia@icloud.com" class="btn-primary" data-i18n="contact-btn">Enviar mensaje</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+<footer>
+  <p>© 2026 Héctor Jesús Pool García</p>
+  <p data-i18n="footer-built">Diseñado para GitHub Pages</p>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   GALERÍA DE FOTOS — edita las descripciones aquí
+   ▸ ES: descripción en español
+   ▸ EN: descripción en inglés
+   ════════════════════════════════════════════════════════════════════════ */
+const PHOTO_CAPTIONS = [
+  { es: '[Descripción de foto 1]',  en: '[Photo 1 description]'  },
+  { es: '[Descripción de foto 2]',  en: '[Photo 2 description]'  },
+  { es: '[Descripción de foto 3]',  en: '[Photo 3 description]'  },
+  { es: '[Descripción de foto 4]',  en: '[Photo 4 description]'  },
+  { es: '[Descripción de foto 5]',  en: '[Photo 5 description]'  },
+  { es: '[Descripción de foto 6]',  en: '[Photo 6 description]'  },
+  { es: '[Descripción de foto 7]',  en: '[Photo 7 description]'  },
+  { es: '[Descripción de foto 8]',  en: '[Photo 8 description]'  },
+  { es: '[Descripción de foto 9]',  en: '[Photo 9 description]'  },
+  { es: '[Descripción de foto 10]', en: '[Photo 10 description]' },
+  { es: '[Descripción de foto 11]', en: '[Photo 11 description]' },
+  { es: '[Descripción de foto 12]', en: '[Photo 12 description]' },
+  { es: '[Descripción de foto 13]', en: '[Photo 13 description]' },
+  { es: '[Descripción de foto 14]', en: '[Photo 14 description]' },
+  { es: '[Descripción de foto 15]', en: '[Photo 15 description]' },
+  { es: '[Descripción de foto 16]', en: '[Photo 16 description]' },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ETIQUETAS DE CARTAS (7 imágenes) — edita las etiquetas aquí
+   ════════════════════════════════════════════════════════════════════════ */
+const LETTER_LABELS = [
+  { es: 'Carta de Recomendación · 1',  en: 'Recommendation Letter · 1'  },
+  { es: 'Carta de Recomendación · 2',  en: 'Recommendation Letter · 2'  },
+  { es: 'Carta de Recomendación · 3',  en: 'Recommendation Letter · 3'  },
+  { es: 'Carta de Pre-admisión · 1',   en: 'Pre-admission Letter · 1'   },
+  { es: 'Carta de Pre-admisión · 2',   en: 'Pre-admission Letter · 2'   },
+  { es: 'Carta de Pre-admisión · 3',   en: 'Pre-admission Letter · 3'   },
+  { es: 'Documento de Solicitud',      en: 'Application Document'        },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TRADUCCIONES — sistema bilingüe unificado
+   Claves con HTML: usar data-i18n-html en el elemento
+   Claves simples:  usar data-i18n en el elemento
+   ════════════════════════════════════════════════════════════════════════ */
+const T = {
+  es: {
+    /* Nav */
+    'nav-about':    'Sobre mí',
+    'nav-exp':      'Experiencia',
+    'nav-skills':   'Habilidades',
+    'nav-gallery':  'Galería',
+    'nav-china':    'China',
+    'nav-downloads':'CV',
+    'nav-contact':  'Contacto',
+    /* Hero */
+    'hero-eyebrow': 'Mérida, Yucatán · QFB · Investigación · Idiomas',
+    'hero-tagline': 'Estudiante de Químico Farmacéutico Biólogo en la UADY con interés en investigación genómica, ciencias forenses y comunicación intercultural.',
+    'hero-cta1':    'Contactar',
+    'hero-cta2':    'Ver experiencia',
+    'scroll-hint':  'scroll',
+    /* About */
+    'about-label':  '01 — Sobre mí',
+    'about-h2':     'Ciencia, <em>idiomas</em> y pensamiento crítico',
+    'about-p1':     'Soy un estudiante de la licenciatura en Químico Farmacéutico Biólogo en la Universidad Autónoma de Yucatán, con interés genuino en la investigación científica y los métodos analíticos de laboratorio.',
+    'about-p2':     'Actualmente realizo una estancia en el laboratorio de Genética del Centro de Investigaciones del Dr. Hideyo Noguchi, donde desarrollo habilidades en metodologías de investigación aplicada y documentación científica.',
+    'about-p3':     'Paralelamente, trabajo de forma remota en Welocalize y cuento con un sólido nivel de chino mandarín como tercer idioma (HSK 3), lo que me permite desenvolverme en entornos académicos y profesionales internacionales.',
+    'stat1':        'Idiomas: español, inglés y chino mandarín',
+    'stat2':        'Egreso estimado de la licenciatura en QFB',
+    'stat3':        'Nivel 3/4 en proceso — Instituto Confucio UADY',
+    /* Experience */
+    'exp-label':    '02 — Experiencia',
+    'present':      'Presente',
+    'exp1-role':    'Estancia corta de investigación — Laboratorio de Genética',
+    'exp1-li1':     'Participación activa en el proyecto "Evaluación de la variante de un solo nucleótido (SNV) rs2289277 en población adulta yucateca con asma y en población sana".',
+    'exp1-li2':     'Desarrollo de metodologías de investigación, documentación científica y análisis de datos experimentales.',
+    'exp1-li3':     'Fortalecimiento de competencias en biología molecular y pensamiento científico riguroso.',
+    'exp2-role':    'Estancia corta de investigación — Laboratorio de Enfermedades Emergentes',
+    'exp2-li1':     'Participación en el proyecto "Detección de virus en garrapatas que afectan a la salud humana".',
+    'exp2-li2':     'Evaluación de materiales científicos bajo criterios académicos predefinidos.',
+    'exp2-li3':     'Fortalecimiento del razonamiento analítico y atención al detalle.',
+    'exp3-role':    'CSI Laboratory: Solving a Forensic Mystery',
+    'exp3-li1':     'Programa intensivo impartido por docentes de Stanford, UADY y Universidad Anáhuac.',
+    'exp3-li2':     'Análisis forense, resolución colaborativa de problemas y razonamiento científico en entorno internacional.',
+    'exp4-role':    'Colaborador Remoto',
+    'exp4-org':     'Remoto',
+    'exp4-li1':     'Trabajo remoto en colaboración con equipos internacionales dentro de la empresa Welocalize.',
+    'exp4-li2':     'Aplicación de habilidades lingüísticas y atención al detalle en entornos profesionales de alto estándar.',
+    'exp5-role':    'Voluntario — Año Nuevo Chino',
+    'exp5-li1':     'Apoyo en eventos culturales con enfoque en narrativa, simbolismo y comunicación intercultural.',
+    'exp5-li2':     'Talleres introductorios de caligrafía china adaptados a audiencias diversas.',
+    /* Skills */
+    'skills-label': '03 — Habilidades',
+    'sk1-title':    'Ciencias Farmacéuticas',
+    'sk2-title':    'Trabajo Remoto',
+    'sk2-t1':       'Trabajo remoto',
+    'sk2-t2':       'Atención al detalle',
+    'sk2-t3':       'Gestión del tiempo',
+    'sk3-title':    'Investigación',
+    'sk4-title':    'Comunicación',
+    /* Languages */
+    'lang-label':    '04 — Idiomas',
+    'lang-native':   'Nativo',
+    'lang-en-level': 'Avanzado / Académico',
+    'lang-zh-level': 'Intermedio — HSK 3',
+    /* Gallery */
+    'gallery-label': '05 — Galería',
+    'gallery-sub':   'Una selección de momentos y experiencias a lo largo de mi trayectoria académica y científica.',
+    /* China */
+    'china-label':  '06 — Aplicación a China',
+    'china-h2':     'Rumbo a <em>China</em>',
+    'china-p1':     'Actualmente me encuentro en proceso de aplicación a programas de intercambio académico y estudio en China, con el objetivo de profundizar en mi formación científica y fortalecer mi dominio del chino mandarín en un entorno de inmersión total.',
+    'china-p2':     'Esta iniciativa refleja mi compromiso con la movilidad internacional y el puente entre la ciencia y los idiomas. A continuación se presentan mis cartas de recomendación y documentos de pre-admisión, con los datos sensibles debidamente censurados.',
+    'cb1': 'Movilidad Internacional',
+    'cb2': 'Intercambio Académico',
+    'cb3': 'Chino Mandarín',
+    'cb4': 'Pre-admisión',
+    /* Downloads */
+    'dl-label':       '07 — Descargas',
+    'tab-cv':         'Currículum',
+    'tab-rec':        'Carta de Recomendación y Constancia',
+    'cv-heading':     'Descarga mi <em>CV</em>',
+    'cv-sub':         'Disponible en ambos idiomas en formato estándar de una página, optimizado para aplicaciones académicas y convocatorias.',
+    'cv-std-title':   'CV Estándar',
+    'cv-std-desc':    'Versión concisa de una página, optimizada para reclutadores y convocatorias académicas.',
+    'cv-std-title-en':'Standard CV',
+    'cv-std-desc-en': 'Concise one-page version, optimized for recruiters and academic applications.',
+    'dl-pdf':         'Descargar PDF',
+    'cv-note':        '* Coloca los PDF en assets/cv/ con los nombres indicados.',
+    'rec-heading':    'Carta de recomendación y <em>constancia</em>',
+    'rec-sub':        'Emitidas por investigadores y profesores que avalan mi trayectoria académica y científica.',
+    'rec1-title':     'Carta de Recomendación',
+    'rec1-org':       'Institución · Firmante',
+    'rec2-title':     'Constancia',
+    'rec2-org':       'Institución · Firmante',
+    'rec-note':       '* Coloca los PDF en assets/rec/ con los nombres indicados.',
+    /* Contact */
+    'contact-label':  '08 — Contacto',
+    'contact-h2':     'Hablemos <em>juntos</em>',
+    'contact-p':      '¿Tienes una oportunidad de investigación, colaboración o proyecto? Me encantaría escucharte.',
+    'contact-btn':    'Enviar mensaje',
+    'location-label': 'Ubicación',
+    /* Footer */
+    'footer-built':   'Diseñado para GitHub Pages',
+  },
+
+  en: {
+    /* Nav */
+    'nav-about':    'About',
+    'nav-exp':      'Experience',
+    'nav-skills':   'Skills',
+    'nav-gallery':  'Gallery',
+    'nav-china':    'China',
+    'nav-downloads':'CV',
+    'nav-contact':  'Contact',
+    /* Hero */
+    'hero-eyebrow': 'Mérida, Yucatán · QFB · Research · Languages',
+    'hero-tagline': 'Pharmaceutical-Biological Chemistry student at UADY with interest in genomic research, forensic sciences, and intercultural communication.',
+    'hero-cta1':    'Get in touch',
+    'hero-cta2':    'View experience',
+    'scroll-hint':  'scroll',
+    /* About */
+    'about-label':  '01 — About me',
+    'about-h2':     'Science, <em>languages</em> and critical thinking',
+    'about-p1':     'I am a Pharmaceutical-Biological Chemistry student at the Universidad Autónoma de Yucatán, with a genuine interest in scientific research and laboratory analytical methods.',
+    'about-p2':     'I am currently completing a research placement at the Genetics Laboratory of the Dr. Hideyo Noguchi Regional Research Center, developing skills in applied research methodologies and scientific documentation.',
+    'about-p3':     'Alongside my studies, I work remotely at Welocalize and hold an intermediate level of Mandarin Chinese (HSK 3) as a third language, enabling me to engage in international academic and professional environments.',
+    'stat1':        'Languages: Spanish, English, and Mandarin Chinese',
+    'stat2':        'Estimated graduation from the QFB program',
+    'stat3':        'Level 3/4 in progress — Confucius Institute UADY',
+    /* Experience */
+    'exp-label':    '02 — Experience',
+    'present':      'Present',
+    'exp1-role':    'Short-term research stay — Genetics Laboratory',
+    'exp1-li1':     'Active participation in the project "Evaluation of the single nucleotide variant (SNV) rs2289277 in adult Yucatecan population with asthma and healthy population".',
+    'exp1-li2':     'Development of research methodologies, scientific documentation, and experimental data analysis.',
+    'exp1-li3':     'Building competencies in molecular biology and rigorous scientific thinking.',
+    'exp2-role':    'Short-term research stay — Emerging Diseases Laboratory',
+    'exp2-li1':     'Participation in the project "Detection of viruses in ticks affecting human health".',
+    'exp2-li2':     'Evaluation of scientific materials against predefined academic criteria.',
+    'exp2-li3':     'Strengthening of analytical reasoning and attention to detail.',
+    'exp3-role':    'CSI Laboratory: Solving a Forensic Mystery',
+    'exp3-li1':     'Intensive program led by faculty from Stanford, UADY, and Universidad Anáhuac.',
+    'exp3-li2':     'Forensic analysis, collaborative problem solving, and scientific reasoning in an international setting.',
+    'exp4-role':    'Remote Collaborator',
+    'exp4-org':     'Remote',
+    'exp4-li1':     'Remote work in collaboration with international teams at Welocalize.',
+    'exp4-li2':     'Application of language skills and attention to detail in high-standard professional environments.',
+    'exp5-role':    'Volunteer — Chinese New Year',
+    'exp5-li1':     'Support at cultural events focused on storytelling, symbolism, and intercultural communication.',
+    'exp5-li2':     'Introductory Chinese calligraphy workshops adapted for diverse audiences.',
+    /* Skills */
+    'skills-label': '03 — Skills',
+    'sk1-title':    'Pharmaceutical Sciences',
+    'sk2-title':    'Remote Work',
+    'sk2-t1':       'Remote work',
+    'sk2-t2':       'Attention to detail',
+    'sk2-t3':       'Time management',
+    'sk3-title':    'Research',
+    'sk4-title':    'Communication',
+    /* Languages */
+    'lang-label':    '04 — Languages',
+    'lang-native':   'Native',
+    'lang-en-level': 'Advanced / Academic',
+    'lang-zh-level': 'Intermediate — HSK 3',
+    /* Gallery */
+    'gallery-label': '05 — Gallery',
+    'gallery-sub':   'A selection of moments and experiences throughout my academic and scientific journey.',
+    /* China */
+    'china-label':  '06 — China Application',
+    'china-h2':     'Bound for <em>China</em>',
+    'china-p1':     'I am currently in the process of applying to academic exchange and study programs in China, with the goal of deepening my scientific training and strengthening my Mandarin Chinese in a full-immersion environment.',
+    'china-p2':     'This initiative reflects my commitment to international mobility and the bridge between science and languages. Below are my recommendation letters and pre-admission documents, with sensitive data appropriately redacted.',
+    'cb1': 'International Mobility',
+    'cb2': 'Academic Exchange',
+    'cb3': 'Mandarin Chinese',
+    'cb4': 'Pre-admission',
+    /* Downloads */
+    'dl-label':       '07 — Downloads',
+    'tab-cv':         'Curriculum Vitae',
+    'tab-rec':        'Recommendation Letter & Certificate',
+    'cv-heading':     'Download my <em>CV</em>',
+    'cv-sub':         'Available in both languages as a concise one-page standard CV, optimised for academic applications.',
+    'cv-std-title':   'CV Estándar',
+    'cv-std-desc':    'Versión concisa de una página, optimizada para reclutadores y convocatorias académicas.',
+    'cv-std-title-en':'Standard CV',
+    'cv-std-desc-en': 'Concise one-page version, optimized for recruiters and academic applications.',
+    'dl-pdf':         'Download PDF',
+    'cv-note':        '* Place your PDF files in assets/cv/ using the indicated filenames.',
+    'rec-heading':    'Recommendation letter and <em>certificate</em>',
+    'rec-sub':        'Issued by researchers and professors who endorse my academic and scientific background.',
+    'rec1-title':     'Recommendation Letter',
+    'rec1-org':       'Institution · Signatory',
+    'rec2-title':     'Certificate',
+    'rec2-org':       'Institution · Signatory',
+    'rec-note':       '* Place your PDF files in assets/rec/ using the indicated filenames.',
+    /* Contact */
+    'contact-label':  '08 — Contact',
+    'contact-h2':     "Let's <em>talk</em>",
+    'contact-p':      'Do you have a research opportunity, collaboration, or project? I would love to hear from you.',
+    'contact-btn':    'Send a message',
+    'location-label': 'Location',
+    /* Footer */
+    'footer-built':   'Designed for GitHub Pages',
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   i18n — motor bilingüe
+   ════════════════════════════════════════════════════════════════════════ */
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  /* Highlight active button */
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase());
+  });
+
+  /* Plain-text elements */
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = T[lang][key];
+    if (val !== undefined) el.textContent = val;
+  });
+
+  /* HTML elements (contain tags like <em>) */
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    const val = T[lang][key];
+    if (val !== undefined) el.innerHTML = val;
+  });
+
+  /* Update dynamic gallery captions */
+  updateGalleryCaptions(lang);
+  updateLetterLabels(lang);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GALLERY builder
+   ════════════════════════════════════════════════════════════════════════ */
+function buildGallery() {
+  const grid = document.getElementById('gallery-grid');
+  PHOTO_CAPTIONS.forEach((cap, i) => {
+    const n = i + 1;
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    div.dataset.index = i;
+    div.innerHTML = `
+      <div class="gallery-img-wrap">
+        <img src="assets/gallery/${n}-photo.jpg" alt="${cap.es}" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">⊕</span></div>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-num">${String(n).padStart(2,'0')}</span>
+        <span class="gallery-cap-text">${cap.es}</span>
+      </div>`;
+    div.addEventListener('click', () => openLightbox('photo', i));
+    grid.appendChild(div);
+  });
+}
+
+function updateGalleryCaptions(lang) {
+  document.querySelectorAll('#gallery-grid .gallery-item').forEach((el, i) => {
+    const span = el.querySelector('.gallery-cap-text');
+    if (span) span.textContent = PHOTO_CAPTIONS[i][lang];
+    const img = el.querySelector('img');
+    if (img) img.alt = PHOTO_CAPTIONS[i][lang];
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LETTERS builder
+   ════════════════════════════════════════════════════════════════════════ */
+function buildLetters() {
+  const grid = document.getElementById('letters-grid');
+  LETTER_LABELS.forEach((lbl, i) => {
+    const n = i + 1;
+    const div = document.createElement('div');
+    div.className = 'letter-item';
+    div.dataset.index = i;
+    div.innerHTML = `
+      <div class="letter-img-wrap">
+        <img src="assets/letters/${n}-letter.jpg" alt="${lbl.es}" loading="lazy"/>
+        <div class="letter-overlay"><span class="gallery-overlay-icon">⊕</span></div>
+      </div>
+      <div class="letter-label letter-label-text">${lbl.es}</div>`;
+    div.addEventListener('click', () => openLightbox('letter', i));
+    grid.appendChild(div);
+  });
+}
+
+function updateLetterLabels(lang) {
+  document.querySelectorAll('#letters-grid .letter-item').forEach((el, i) => {
+    const lbl = el.querySelector('.letter-label-text');
+    if (lbl) lbl.textContent = LETTER_LABELS[i][lang];
+    const img = el.querySelector('img');
+    if (img) img.alt = LETTER_LABELS[i][lang];
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LIGHTBOX
+   ════════════════════════════════════════════════════════════════════════ */
+let lbMode = 'photo', lbIndex = 0;
+
+function openLightbox(mode, index) {
+  lbMode  = mode;
+  lbIndex = index;
+  showLightboxItem();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showLightboxItem() {
+  const lb  = document.getElementById('lb-img');
+  const cap = document.getElementById('lb-caption');
+  if (lbMode === 'photo') {
+    const n = lbIndex + 1;
+    lb.src  = `assets/gallery/${n}-photo.jpg`;
+    lb.alt  = PHOTO_CAPTIONS[lbIndex][currentLang];
+    cap.textContent = `${String(n).padStart(2,'0')} — ${PHOTO_CAPTIONS[lbIndex][currentLang]}`;
+  } else {
+    const n = lbIndex + 1;
+    lb.src  = `assets/letters/${n}-letter.jpg`;
+    lb.alt  = LETTER_LABELS[lbIndex][currentLang];
+    cap.textContent = `${String(n).padStart(2,'0')} — ${LETTER_LABELS[lbIndex][currentLang]}`;
+  }
+}
+
+function lbNavigate(dir) {
+  const total = lbMode === 'photo' ? PHOTO_CAPTIONS.length : LETTER_LABELS.length;
+  lbIndex = (lbIndex + dir + total) % total;
+  showLightboxItem();
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => lbNavigate(-1));
+document.getElementById('lb-next').addEventListener('click', () => lbNavigate(+1));
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft')   lbNavigate(-1);
+  if (e.key === 'ArrowRight')  lbNavigate(+1);
+});
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABS (Downloads)
+   ════════════════════════════════════════════════════════════════════════ */
+function switchTab(tab) {
+  document.querySelectorAll('.dl-tab').forEach((b, i) => {
+    b.classList.toggle('active', (i === 0 && tab === 'cv') || (i === 1 && tab === 'rec'));
+  });
+  document.getElementById('panel-cv').classList.toggle('active',  tab === 'cv');
+  document.getElementById('panel-rec').classList.toggle('active', tab === 'rec');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCROLL OBSERVERS
+   ════════════════════════════════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.lang-bar').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════════════════════════════════ */
+buildGallery();
+buildLetters();
+
+document.querySelectorAll('.exp-item, .gallery-item, .letter-item').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('#languages').forEach(el => barObserver.observe(el));
+</script>
+</body>
+</html>
