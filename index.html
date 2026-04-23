@@ -827,7 +827,6 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing
         </a>
       </div>
     </div>
-    <p class="cv-note" data-i18n="cv-note">* Coloca los PDF en <code>assets/cv/</code> con los nombres indicados.</p>
   </div>
 
   <!-- Recommendation letters panel -->
@@ -857,7 +856,6 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing
         </a>
       </div>
     </div>
-    <p class="cv-note" data-i18n="rec-note">* Coloca los PDF en <code>assets/rec/</code> con los nombres indicados.</p>
   </div>
 
 </section>
@@ -901,35 +899,35 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing
    ▸ EN: descripción en inglés
    ════════════════════════════════════════════════════════════════════════ */
 const PHOTO_CAPTIONS = [
-  { es: '[Descripción de foto 1]',  en: '[Photo 1 description]'  },
-  { es: '[Descripción de foto 2]',  en: '[Photo 2 description]'  },
-  { es: '[Descripción de foto 3]',  en: '[Photo 3 description]'  },
-  { es: '[Descripción de foto 4]',  en: '[Photo 4 description]'  },
-  { es: '[Descripción de foto 5]',  en: '[Photo 5 description]'  },
-  { es: '[Descripción de foto 6]',  en: '[Photo 6 description]'  },
-  { es: '[Descripción de foto 7]',  en: '[Photo 7 description]'  },
-  { es: '[Descripción de foto 8]',  en: '[Photo 8 description]'  },
-  { es: '[Descripción de foto 9]',  en: '[Photo 9 description]'  },
-  { es: '[Descripción de foto 10]', en: '[Photo 10 description]' },
-  { es: '[Descripción de foto 11]', en: '[Photo 11 description]' },
-  { es: '[Descripción de foto 12]', en: '[Photo 12 description]' },
-  { es: '[Descripción de foto 13]', en: '[Photo 13 description]' },
-  { es: '[Descripción de foto 14]', en: '[Photo 14 description]' },
-  { es: '[Descripción de foto 15]', en: '[Photo 15 description]' },
-  { es: '[Descripción de foto 16]', en: '[Photo 16 description]' },
+  { es: 'Micrografía de agregado celular con tinción fluorescente.', en: 'Fluorescently stained cell aggregate micrograph.' },
+  { es: 'Documentación digital de un análisis de electroforesis en gel de poliacrilamida (PAGE).', en: 'Digital documentation of a polyacrylamide gel electrophoresis (PAGE) analysis.' },
+  { es: 'Práctica de HLPC.', en: 'HLPC practice.' },
+  { es: 'Cámara de electroforesis vertical con gel y líquido amortiguador.', en: 'Vertical electrophoresis chamber containing a gel and buffer solution.' },
+  { es: 'Micrografía de hifas fúngicas y conidióforos con tinción de azul de lactofenol.', en: 'Micrograph of fungal hyphae and conidiophores with lactophenol cotton blue stain.' },
+  { es: 'Micrografía de frotis de sangre periférica teñido ilustrando eritrocitos e inclusiones celulares.', en: 'Stained peripheral blood smear micrograph illustrating erythrocytes and cellular inclusions.' },
+  { es: 'Micrografía en vista ventral de un espécimen de garrapata (familia Ixodidae).', en: 'Ventral view micrograph of an Ixodid tick specimen.' },
+  { es: 'Cultivo en placa de Petri mostrando colonias de la bacteria Salmonella con su característico centro negro.', en: 'Petri dish culture showing colonies of Salmonella bacteria with characteristic black centers.' },
+  { es: 'Interfaz de medición de absorbancia espectrofotométrica a 505 nm.', en: 'Spectrophotometric absorbance measurement interface at 505 nm.' },
+  { es: 'Colonias bacterianas aisladas con precipitación central de sulfuro de hidrógeno en cultivo de agar diferencial.', en: 'Isolated bacterial colonies with central hydrogen sulfide precipitation on differential agar culture.' },
+  { es: 'Interfaz de un equipo termociclador mostrando un directorio de protocolos de reacción en cadena de la polimerasa (PCR).', en: 'Interface of a thermal cycler equipment displaying a directory of polymerase chain reaction (PCR) protocols.' },
+  { es: 'Técnica de extracción Soxhlet.', en: 'Soxhlet extraction technique.' },
+  { es: 'Analizador.', en: 'Analyzer.' },
+  { es: 'Gel de agarosa iluminado por luz ultravioleta dentro de un transiluminador, mostrando bandas de ácidos nucleicos separados.', en: 'Agarose gel illuminated by ultraviolet light inside a transilluminator, displaying separated nucleic acid bands.' },
+  { es: 'Batería de pruebas bioquímicas de Salmonella.', en: 'Salmonella biochemical test battery.' },
+  { es: 'Parte de la práctica de HLPC.', en: 'Part of the HLPC practice.' }
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════
    ETIQUETAS DE CARTAS (7 imágenes) — edita las etiquetas aquí
    ════════════════════════════════════════════════════════════════════════ */
 const LETTER_LABELS = [
-  { es: 'Carta de Recomendación · 1',  en: 'Recommendation Letter · 1'  },
-  { es: 'Carta de Recomendación · 2',  en: 'Recommendation Letter · 2'  },
-  { es: 'Carta de Recomendación · 3',  en: 'Recommendation Letter · 3'  },
-  { es: 'Carta de Pre-admisión · 1',   en: 'Pre-admission Letter · 1'   },
-  { es: 'Carta de Pre-admisión · 2',   en: 'Pre-admission Letter · 2'   },
-  { es: 'Carta de Pre-admisión · 3',   en: 'Pre-admission Letter · 3'   },
-  { es: 'Documento de Solicitud',      en: 'Application Document'        },
+  { es: 'Carta de Pre-admisión',  en: 'Pre-admission Letter'  },
+  { es: 'Carta de Pre-admisión',  en: 'Pre-admission Letter'  },
+  { es: 'Carta de Pre-admisión',  en: 'Pre-admission Letter'  },
+  { es: 'Carta de Pre-admisión',   en: 'Pre-admission Letter'   },
+  { es: 'Carta de Pre-admisión',   en: 'Pre-admission Letter'   },
+  { es: 'Carta de Recomendación',   en: 'Recommendation Letter'   },
+  { es: 'Carta de Recomendación',      en: 'Recommendation Letter'        },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════
