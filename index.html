@@ -58,10 +58,11 @@ figure{margin:0 0 20px;break-inside:avoid}
 figure .lb{display:block;width:100%;padding:0;border:1px solid var(--bd);border-radius:6px;overflow:hidden;background:none;cursor:zoom-in}
 figure img{display:block;width:100%;height:auto}
 figcaption{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.45}
-dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;color:#fff}
-dialog::backdrop{background:rgba(15,15,15,.82)}
-dialog img{display:block;max-width:94vw;max-height:84vh;margin:0 auto;border-radius:4px;background:#fff}
-dialog p{text-align:center;margin:10px 0 0;font-size:13.5px}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:auto;color:#fff}
+dialog::backdrop{background:rgba(15,15,15,.88)}
+dialog img{display:block;max-width:94vw;max-height:82vh;width:auto;height:auto;margin:0 auto;border-radius:4px;background:#fff;color:#222;cursor:zoom-in}
+dialog.z img{max-width:none;max-height:none;cursor:zoom-out}
+dialog p{text-align:center;margin:10px 12px 12px;font-size:13.5px}
 dialog button{position:fixed;top:14px;right:18px;background:#fff;color:#222;border:0;border-radius:6px;padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
 .foot{margin-top:56px;padding-top:14px;border-top:1px solid var(--bd);color:var(--mu);font-size:12.5px}
 @media (max-width:860px){
@@ -286,6 +287,30 @@ dialog button{position:fixed;top:14px;right:18px;background:#fff;color:#222;bord
 
 <script>
 document.documentElement.classList.add('js');
+var HINT=" (clic en la imagen para verla a tamaño completo)";
+/* Pies de foto de la galería: edita solo esta lista (en orden, figura 1 a 16) */
+var FIG=[
+ "Imagen de microscopía de fluorescencia observada en pantalla.",
+ "Imagen de un gel capturada en el sistema de documentación Bio-Rad.",
+ "Software de datos cromatográficos con un cromatograma y su tabla de picos.",
+ "Cámara de electroforesis vertical.",
+ "Estructuras filamentosas teñidas, observadas al microscopio óptico.",
+ "Frotis sanguíneo teñido observado al microscopio.",
+ "Garrapata observada al microscopio.",
+ "Colonias bacterianas de centro oscuro en agar selectivo.",
+ "Fotómetro de química clínica: pantalla al finalizar una lectura.",
+ "Placa de agar con colonias bacterianas aisladas.",
+ "Termociclador iCycler (Bio-Rad) durante la programación de una corrida.",
+ "Montaje de laboratorio con matraces de fondo redondo y refrigerantes.",
+ "Fotómetro de química clínica: menú de pruebas del equipo.",
+ "Gel de agarosa sobre el transiluminador de luz ultravioleta.",
+ "Serie de tubos con medios para pruebas bioquímicas.",
+ "Sistema de cromatografía de líquidos de alta resolución (HPLC)."
+];
+(function(){var FP="Figura",FA="Ampliar figura";
+document.querySelectorAll('.gal figure').forEach(function(f,i){var c=FIG[i];if(!c)return;var cp=f.querySelector('figcaption'),b=f.querySelector('.lb'),m=f.querySelector('img'),s=document.createElement('b');
+cp.textContent='';s.textContent=FP+' '+(i+1)+'.';cp.appendChild(s);cp.appendChild(document.createTextNode(' '+c));
+b.dataset.cap=FP+' '+(i+1)+'. '+c;b.setAttribute('aria-label',FA+' '+(i+1));m.alt=c})})();
 (function(){
   var secs=[].slice.call(document.querySelectorAll('section')),links=[].slice.call(document.querySelectorAll('nav a')),side=document.getElementById('side'),menu=document.getElementById('menu');
   function show(){
@@ -301,7 +326,8 @@ document.documentElement.classList.add('js');
   var d=document.getElementById('lbx'),im=document.getElementById('lbi'),p=document.getElementById('lbp');
   document.addEventListener('click',function(e){
     var b=e.target.closest('.lb');
-    if(b){im.src=b.dataset.src;im.alt=b.dataset.cap||'';p.textContent=b.dataset.cap||'';if(d.showModal)d.showModal();else window.open(b.dataset.src)}
+    if(b){var th=(b.closest('.card,figure')||document).querySelector('img');d.classList.remove('z');im.onerror=function(){im.onerror=null;if(th)im.src=th.currentSrc||th.src};im.src=b.dataset.src;im.alt=b.dataset.cap||'';p.textContent=(b.dataset.cap||'')+HINT;if(d.showModal)d.showModal();else window.open(b.dataset.src);d.scrollTop=0}
+    else if(e.target===im)d.classList.toggle('z');
     else if(e.target===d||e.target.id==='lbc')d.close();
   });
 })();
