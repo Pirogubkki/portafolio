@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Héctor Jesús Pool García</title>
+<link rel="alternate" hreflang="es" href="index.html">
+<meta name="description" content="Academic portfolio of Héctor Jesús Pool García, Pharmaceutical-Biological Chemistry student at the Universidad Autónoma de Yucatán.">
+<style>
+:root{--bg:#fff;--side:#fbfbfa;--fg:#37352f;--mu:#787774;--bd:#e9e9e7;--hv:#f1f1ef;--ac:#2383e2;--tag:#f1f1ef}
+@media (prefers-color-scheme:dark){:root{--bg:#191919;--side:#202020;--fg:#e6e6e4;--mu:#9b9a97;--bd:#2f2f2f;--hv:#2a2a2a;--ac:#5aa7ee;--tag:#2f2f2f}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:4px}
+.app{display:flex;min-height:100vh}
+aside{width:248px;flex:none;background:var(--side);border-right:1px solid var(--bd);padding:18px 10px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
+.brand{padding:4px 10px 14px;font-weight:600;font-size:14px;line-height:1.35}.brand small{display:block;font-weight:400;color:var(--mu);font-size:12px;margin-top:2px}
+.grp{padding:12px 10px 4px;font-size:11.5px;color:var(--mu);letter-spacing:.02em}
+nav a{display:block;padding:4px 10px;margin:1px 0;border-radius:6px;color:var(--fg);font-size:14px}
+nav a:hover{background:var(--hv);text-decoration:none}
+nav a.on{background:var(--hv);font-weight:600}
+nav a.sub{padding-left:26px;color:var(--mu);font-size:13.5px}nav a.sub.on{color:var(--fg)}
+.sf{margin-top:auto;padding:14px 10px 0;font-size:12.5px;color:var(--mu);border-top:1px solid var(--bd)}.sf a{display:block;padding:2px 0}
+#menu{display:none}
+main{flex:1;min-width:0;padding:64px 56px 80px}
+section{max-width:790px;margin:0 auto;display:none}
+section.on,html:not(.js) section{display:block}
+html:not(.js) section{margin-bottom:56px}
+h1{font-size:34px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;font-weight:700}
+h2{font-size:20px;line-height:1.3;margin:40px 0 10px;font-weight:600;letter-spacing:-.005em}
+h3{font-size:15px;margin:22px 0 6px;font-weight:600}
+.lead{color:var(--mu);margin:0 0 26px;font-size:16px}
+p{margin:0 0 12px}
+.mu{color:var(--mu)}
+.props{margin:0 0 8px;border-top:1px solid var(--bd)}
+.props div{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:7px 2px;border-bottom:1px solid var(--bd);font-size:14.5px}
+.props dt,.props .k{color:var(--mu)}
+.tag{display:inline-block;background:var(--tag);border-radius:4px;padding:0 7px;margin:1px 4px 1px 0;font-size:12.5px;line-height:1.7}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:6px 0 4px}
+th{text-align:left;font-weight:500;color:var(--mu);font-size:12.5px;padding:7px 10px;border-bottom:1px solid var(--bd);border-top:1px solid var(--bd)}
+td{padding:9px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
+td:first-child,th:first-child{padding-left:2px}
+td.d{white-space:nowrap;color:var(--mu);width:150px;font-size:13.5px}
+td b{font-weight:600}
+ul{margin:4px 0 12px;padding-left:20px}li{margin:2px 0}
+.note{border-left:2px solid var(--bd);padding:2px 0 2px 14px;color:var(--mu);margin:14px 0}
+.btn{display:inline-block;border:1px solid var(--bd);border-radius:6px;padding:5px 12px;color:var(--fg);font-size:14px;background:var(--bg);margin:0 8px 8px 0;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--hv);text-decoration:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin:12px 0 8px}
+.card{display:flex;flex-direction:column;font-size:13.5px}
+.card .th{display:block;border:1px solid var(--bd);border-radius:6px;overflow:hidden;background:#fff;padding:0;cursor:pointer;margin-bottom:8px}
+.card .th img{display:block;width:100%;height:auto}
+.ct{font-weight:600;line-height:1.35}.cs{color:var(--mu);margin:2px 0 6px;line-height:1.45}.cl a,.cl button{font-size:13px;color:var(--ac);background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
+.gal{columns:3 200px;column-gap:18px;margin-top:14px}
+figure{margin:0 0 20px;break-inside:avoid}
+figure .lb{display:block;width:100%;padding:0;border:1px solid var(--bd);border-radius:6px;overflow:hidden;background:none;cursor:zoom-in}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.45}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;color:#fff}
+dialog::backdrop{background:rgba(15,15,15,.82)}
+dialog img{display:block;max-width:94vw;max-height:84vh;margin:0 auto;border-radius:4px;background:#fff}
+dialog p{text-align:center;margin:10px 0 0;font-size:13.5px}
+dialog button{position:fixed;top:14px;right:18px;background:#fff;color:#222;border:0;border-radius:6px;padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
+.foot{margin-top:56px;padding-top:14px;border-top:1px solid var(--bd);color:var(--mu);font-size:12.5px}
+@media (max-width:860px){
+ .app{display:block}
+ aside{position:sticky;top:0;z-index:10;width:100%;height:auto;max-height:100vh;flex-direction:column;border-right:0;border-bottom:1px solid var(--bd);padding:8px 10px}
+ .brand{padding:4px 70px 4px 6px}
+ #menu{display:block;position:absolute;right:10px;top:9px;border:1px solid var(--bd);background:var(--bg);color:var(--fg);border-radius:6px;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+ .js aside .nv{display:none}.js aside.open .nv{display:block}
+ main{padding:32px 20px 60px}h1{font-size:28px}
+ .props div{grid-template-columns:110px 1fr}
+ td.d{width:auto;white-space:normal}
+}
+@media print{aside,#menu,.btn{display:none}main{padding:0}section{display:block!important;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside id="side">
+  <div class="brand">Héctor Jesús Pool García<small>Pharmaceutical-Biological Chemistry, UADY</small></div>
+  <button id="menu" aria-expanded="false" aria-controls="nv">Menu</button>
+  <div class="nv" id="nv">
+    <nav aria-label="Pages">
+      <div class="grp">Pages</div>
+      <a href="#/home" data-p="home">Home</a>
+      <a href="#/education" data-p="education">Education</a>
+      <a href="#/research" data-p="research">Research</a>
+      <a href="#/presentations" data-p="presentations">Presentations</a>
+      <a href="#/experience" data-p="experience">Experience</a>
+      <a href="#/china" data-p="china">Chinese Language and Culture</a>
+      <a class="sub" href="#/letters" data-p="letters">Letters</a>
+      <a href="#/laboratory" data-p="laboratory">Laboratory</a>
+      <a href="#/curriculum" data-p="curriculum">Curriculum</a>
+    </nav>
+    <div class="sf">
+      <a href="mailto:hpoolgarcia@icloud.com">hpoolgarcia@icloud.com</a>
+      <a href="https://www.linkedin.com/in/hectorpool/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="index.html" hreflang="es">Versión en español</a>
+    </div>
+  </div>
+</aside>
+
+<main>
+<!-- INICIO -->
+<section id="home" data-t="Home">
+  <h1>Héctor Jesús Pool García</h1>
+  <p class="lead">Pharmaceutical-Biological Chemistry student at the Universidad Autónoma de Yucatán</p>
+  <div class="props">
+    <div><span class="k">Program</span><span>Bachelor's Degree in Pharmaceutical-Biological Chemistry</span></div>
+    <div><span class="k">Expected graduation</span><span>2028</span></div>
+    <div><span class="k">Location</span><span>Mérida, Yucatán, Mexico</span></div>
+    <div><span class="k">Interests</span><span><span class="tag">Molecular genetics</span><span class="tag">Molecular detection of pathogens</span><span class="tag">Synthetic biology</span><span class="tag">Chinese language</span></span></div>
+    <div><span class="k">Contact</span><span><a href="mailto:hpoolgarcia@icloud.com">hpoolgarcia@icloud.com</a> &middot; <a href="https://www.linkedin.com/in/hectorpool/" target="_blank" rel="noopener">LinkedIn</a></span></div>
+  </div>
+  <h2>About</h2>
+  <p>I am a Pharmaceutical-Biological Chemistry student at UADY. I have taken part in research stays and volunteer in the Genetics Laboratory of the Centro de Investigaciones Regionales “Dr. Hideyo Noguchi”, where I have worked with nucleic acid extraction, allele-specific PCR, RT-PCR, and agarose and polyacrylamide gel electrophoresis.</p>
+  <p>My training also includes continuous study of the Chinese language since 2022 at the UADY Confucius Institute. This site brings together my academic background, my projects, and the documentation that supports them.</p>
+  <h2>Recent activity</h2>
+  <table>
+    <tr><th>Period</th><th>Activity</th></tr>
+    <tr><td class="d">Summer 2026 – present</td><td><b>Volunteer</b>, Genetics Laboratory, CIR “Dr. Hideyo Noguchi”, UADY. <a href="#/research">See research</a></td></tr>
+    <tr><td class="d">Jan – Aug 2026</td><td><b>AI Data Annotator</b>, Welocalize. <a href="#/experience">See experience</a></td></tr>
+    <tr><td class="d">Feb – Apr 2026</td><td><b>Research stay</b>: TSLP variant rs2289277 and severe asthma in the Yucatecan population. <a href="#/research">See research</a></td></tr>
+  </table>
+</section>
+
+<!-- FORMACION -->
+<section id="education" data-t="Education">
+  <h1>Education</h1>
+  <p class="lead">Formal studies and relevant coursework</p>
+  <table>
+    <tr><th>Period</th><th>Institution and program</th></tr>
+    <tr><td class="d">In progress<br>Expected graduation: 2028</td><td><b>Universidad Autónoma de Yucatán (UADY)</b>, Mérida, Mexico<br>Bachelor's Degree in Pharmaceutical-Biological Chemistry<br><span class="mu">Relevant coursework: Analytical Chemistry, Organic Chemistry, Biochemistry, Microbiology, Pharmaceutical Analysis.</span></td></tr>
+    <tr><td class="d">2019 – 2022</td><td><b>Preparatoria Uno, Universidad Autónoma de Yucatán</b>, Mérida, Mexico<br>General University Baccalaureate (Bachillerato General Universitario, BGU)<br><span class="mu">Mandarin Chinese as a foreign language throughout the three years of high school.</span></td></tr>
+  </table>
+  <h2>Additional training</h2>
+  <table>
+    <tr><th>Period</th><th>Program</th></tr>
+    <tr><td class="d">2022 – present</td><td><b>Chinese Language Program, Confucius Institute, UADY</b><br><span class="mu">Mandarin Chinese, HSK level 3. <a href="#/china">See Chinese language and culture page</a></span></td></tr>
+    <tr><td class="d">2025 – present</td><td><b>How to Grow (Almost) Anything (HTGAA), Stanford University</b>, online. Auditor.<br><span class="mu">Program focused on synthetic biology and biological engineering.</span></td></tr>
+    <tr><td class="d">July 2025</td><td><b>Clubes de Ciencia México, “CSI Laboratory: Solving a Forensic Mystery”</b><br><span class="mu">Intensive program organized by faculty from Stanford University, UADY, and Universidad Anáhuac.</span></td></tr>
+  </table>
+</section>
+
+<!-- INVESTIGACION -->
+<section id="research" data-t="Research">
+  <h1>Research</h1>
+  <p class="lead">Research stays and laboratory work at the Centro de Investigaciones Regionales “Dr. Hideyo Noguchi”, UADY</p>
+  <table>
+    <tr><th>Period</th><th>Activity</th></tr>
+    <tr><td class="d">Summer 2026 – present</td><td><b>Volunteer, Genetics Laboratory</b>, Biomedical Unit<br>Volunteer assistant providing ongoing support in applied biomedical research methodologies and genetic analysis.</td></tr>
+    <tr><td class="d">Feb 3 – Apr 30, 2026</td><td><b>Short-Term Research Stays Program, Winter-Spring 2026</b><br>Genetics Laboratory, Biomedical Unit<br>Completed project: “Association of the rs2289277 variant of the TSLP gene with severe asthma in the adult Yucatecan population”.<br><span class="tag">DNA extraction</span><span class="tag">Allele-specific PCR</span><span class="tag">Gel electrophoresis</span><br><a href="assets/resumenes/estancia-invierno-primavera-2026.pdf" target="_blank" rel="noopener">Results summary (PDF)</a></td></tr>
+    <tr><td class="d">Oct 7 – Dec 12, 2025</td><td><b>Short-Term Research Stays Program, Fall 2025</b><br>Emerging Diseases Laboratory<br>Project: “Detection of viruses in ticks affecting human health”, with specimens collected statewide across Yucatán.<br><span class="tag">RNA extraction</span><span class="tag">RT-PCR</span><span class="tag">Polyacrylamide gel electrophoresis</span><br><a href="assets/resumenes/estancia-otono-2025.pdf" target="_blank" rel="noopener">Results summary (PDF)</a></td></tr>
+  </table>
+  <h2>Academic programs</h2>
+  <table>
+    <tr><th>Period</th><th>Program</th></tr>
+    <tr><td class="d">2025 – present</td><td><b>How to Grow (Almost) Anything (HTGAA)</b>, Stanford University, online. Auditor.<br>Synthetic biology and biological engineering.</td></tr>
+    <tr><td class="d">July 2025</td><td><b>Clubes de Ciencia México, “CSI Laboratory: Solving a Forensic Mystery”</b>, Mérida<br>Intensive scientific training organized by faculty from Stanford University, UADY, and Universidad Anáhuac.</td></tr>
+  </table>
+  <p class="note">The recommendation letters and the 2026 research stay certificate are on the <a href="#/letters">Letters</a> page. Posters and results summaries are in <a href="#/presentations">Presentations</a>, and the photographic record of techniques and equipment is in <a href="#/laboratory">Laboratory</a>.</p>
+</section>
+
+<!-- PRESENTACIONES -->
+<section id="presentations" data-t="Presentations">
+  <h1>Presentations</h1>
+  <p class="lead">Posters and results summaries</p>
+  <h2>Posters</h2>
+  <div class="cards">
+    <div class="card">
+      <button class="lb th" data-src="assets/posters/cartel-congreso.jpg" data-cap="Association of the rs16924159 genetic variant in IL33 with montelukast use in asthma patients from Yucatán. Poster presented at a conference. <!-- COMPLETAR --> [Conference name, city, and date]" aria-label="Enlarge poster: Asociación de la variante rs16924159 en IL33 con el uso de montelukast en pacientes con asma de Yucatán"><img src="assets/posters/cartel-congreso.jpg" alt="Poster: Asociación de la variante rs16924159 en IL33 con el uso de montelukast en pacientes con asma de Yucatán" loading="lazy"></button>
+      <div class="ct">Association of the rs16924159 genetic variant in IL33 with montelukast use in asthma patients from Yucatán</div>
+      <div class="cs">Poster presented at a conference. <!-- COMPLETAR --> [Conference name, city, and date]</div>
+      <div class="cl"><button class="lb link" data-src="assets/posters/cartel-congreso.jpg" data-cap="Association of the rs16924159 genetic variant in IL33 with montelukast use in asthma patients from Yucatán. Poster presented at a conference. <!-- COMPLETAR --> [Conference name, city, and date]">View image</button> &middot; <a href="assets/posters/cartel-congreso.pdf" target="_blank" rel="noopener">Open PDF</a></div>
+    </div>
+    <div class="card">
+      <button class="lb th" data-src="assets/posters/cartel-genetica.jpg" data-cap="Spinal muscular atrophy type 1. Outreach poster on a basic overview of the disease. Genetics course. <!-- COMPLETAR --> [Semester or date]" aria-label="Enlarge poster: Spinal muscular atrophy type 1"><img src="assets/posters/cartel-genetica.jpg" alt="Poster: Spinal muscular atrophy type 1" loading="lazy"></button>
+      <div class="ct">Spinal muscular atrophy type 1</div>
+      <div class="cs">Outreach poster on a basic overview of the disease. Genetics course. <!-- COMPLETAR --> [Semester or date]</div>
+      <div class="cl"><button class="lb link" data-src="assets/posters/cartel-genetica.jpg" data-cap="Spinal muscular atrophy type 1. Outreach poster on a basic overview of the disease. Genetics course. <!-- COMPLETAR --> [Semester or date]">View image</button> &middot; <a href="assets/posters/cartel-genetica.pdf" target="_blank" rel="noopener">Open PDF</a></div>
+    </div>
+  </div>
+  <h2>Research stay summaries</h2>
+  <p>Summaries of the results of the projects carried out during the stays at the Centro de Investigaciones Regionales “Dr. Hideyo Noguchi”.</p>
+  <table>
+    <tr><th>Period</th><th>Project</th><th>Document</th></tr>
+    <tr><td class="d">Feb 3 – Apr 30, 2026</td><td><b>Association of the rs2289277 variant of the TSLP gene with severe asthma in the adult Yucatecan population</b><br><span class="mu">Genetics Laboratory, Biomedical Unit</span></td><td><a href="assets/resumenes/estancia-invierno-primavera-2026.pdf" target="_blank" rel="noopener">Results summary (PDF)</a></td></tr>
+    <tr><td class="d">Oct 7 – Dec 12, 2025</td><td><b>Detection of viruses in ticks affecting human health</b><br><span class="mu">Emerging Diseases Laboratory</span></td><td><a href="assets/resumenes/estancia-otono-2025.pdf" target="_blank" rel="noopener">Results summary (PDF)</a></td></tr>
+  </table>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experience" data-t="Experience">
+  <h1>Experience</h1>
+  <p class="lead">Professional experience</p>
+  <table>
+    <tr><th>Period</th><th>Position</th></tr>
+    <tr><td class="d">Jan – Aug 2026</td><td><b>AI Data Annotator</b>, Welocalize (remote)
+      <ul>
+        <li>Data labeling in target language(s) for machine learning on a large variety of tasks, performing research as needed.</li>
+        <li>Determined whether language and style are appropriate to the cultural and geopolitical target locales.</li>
+        <li>Attention to detail and task instructions, applying best practices consistently.</li>
+        <li>Adherence to productivity and quality standards; reported bugs and issues as they occurred.</li>
+      </ul></td></tr>
+  </table>
+  <h2>Volunteering</h2>
+  <table>
+    <tr><th>Period</th><th>Activity</th></tr>
+    <tr><td class="d">2022 – 2024</td><td><b>Volunteer, Chinese New Year</b>, Confucius Institute, UADY<br>Introductory Chinese calligraphy workshops for the community and support for cultural exchange. <a href="#/china">See Chinese language and culture</a></td></tr>
+  </table>
+</section>
+
+<!-- CHINA -->
+<section id="china" data-t="Chinese Language and Culture">
+  <h1>Chinese Language and Culture</h1>
+  <p class="lead">Mandarin Chinese studies since 2022</p>
+  <div class="props">
+    <div><span class="k">Level</span><span>Intermediate, HSK Level 3</span></div>
+    <div><span class="k">Training</span><span>Confucius Institute, UADY (2022 – present)</span></div>
+    <div><span class="k">Goal</span><span>Preparation for higher HSK proficiency levels</span></div>
+  </div>
+  <h2>Language studies</h2>
+  <table>
+    <tr><th>Period</th><th>Program</th></tr>
+    <tr><td class="d">2022 – present</td><td><b>Chinese Language Program, Confucius Institute, UADY</b><br>Continuous formal training following the curriculum of the Confucius Institute, developing listening, speaking, reading, and writing skills.</td></tr>
+    <tr><td class="d">2019 – 2022</td><td><b>Preparatoria Uno, UADY</b><br>General University Baccalaureate (BGU). Mandarin Chinese as a foreign language throughout the three years.</td></tr>
+  </table>
+  <h2>Cultural activities</h2>
+  <table>
+    <tr><th>Period</th><th>Activity</th></tr>
+    <tr><td class="d">2022 – 2024</td><td><b>Volunteer, Chinese New Year celebrations</b><br>Introductory Chinese calligraphy workshops for the local community; support for cultural exchange and the promotion of Chinese traditions.</td></tr>
+  </table>
+  <h2>Application to a Chinese language program, 2025 – 2026</h2>
+  <p>Between 2025 and 2026 I applied to one-year Chinese language programs at universities in China under the Chinese Government Scholarship (CSC). As part of the process I obtained pre-admission letters from five universities and recommendation letters from an instructor at the UADY Confucius Institute and from a researcher at Stanford University. They are presented here as support for my background in the Chinese language.</p>
+  <h3>Pre-admission letters</h3>
+  <div class="cards"><div class="card"><button class="lb th" data-src="assets/letters/1-letter.jpg" data-cap="Beijing Language and Culture University. Pre-admission, Chinese language program. First semester at the Hainan campus and second in Beijing." aria-label="View letter: Beijing Language and Culture University"><img src="assets/letters/thumbs/1.jpg" width="480" height="678" alt="Letter: Beijing Language and Culture University" loading="lazy"></button><div class="ct">Beijing Language and Culture University</div><div class="cs">Pre-admission, Chinese language program. First semester at the Hainan campus and second in Beijing.</div><div class="cl"><button class="lb link" data-src="assets/letters/1-letter.jpg" data-cap="Beijing Language and Culture University. Pre-admission, Chinese language program. First semester at the Hainan campus and second in Beijing.">View image</button></div></div><div class="card"><button class="lb th" data-src="assets/letters/2-letter.jpg" data-cap="Shanghai International Studies University. Pre-admission, Chinese language program." aria-label="View letter: Shanghai International Studies University"><img src="assets/letters/thumbs/2.jpg" width="480" height="679" alt="Letter: Shanghai International Studies University" loading="lazy"></button><div class="ct">Shanghai International Studies University</div><div class="cs">Pre-admission, Chinese language program.</div><div class="cl"><button class="lb link" data-src="assets/letters/2-letter.jpg" data-cap="Shanghai International Studies University. Pre-admission, Chinese language program.">View image</button></div></div><div class="card"><button class="lb th" data-src="assets/letters/3-letter.jpg" data-cap="Yunnan University. Pre-admission, School of International Chinese Language Education." aria-label="View letter: Yunnan University"><img src="assets/letters/thumbs/3.jpg" width="480" height="679" alt="Letter: Yunnan University" loading="lazy"></button><div class="ct">Yunnan University</div><div class="cs">Pre-admission, School of International Chinese Language Education.</div><div class="cl"><button class="lb link" data-src="assets/letters/3-letter.jpg" data-cap="Yunnan University. Pre-admission, School of International Chinese Language Education.">View image</button></div></div><div class="card"><button class="lb th" data-src="assets/letters/4-letter.jpg" data-cap="Anhui University. Pre-admission, Chinese Language and Literature taught in Chinese, School of International Education." aria-label="View letter: Anhui University"><img src="assets/letters/thumbs/4.jpg" width="480" height="679" alt="Letter: Anhui University" loading="lazy"></button><div class="ct">Anhui University</div><div class="cs">Pre-admission, Chinese Language and Literature taught in Chinese, School of International Education.</div><div class="cl"><button class="lb link" data-src="assets/letters/4-letter.jpg" data-cap="Anhui University. Pre-admission, Chinese Language and Literature taught in Chinese, School of International Education.">View image</button></div></div><div class="card"><button class="lb th" data-src="assets/letters/5-letter.jpg" data-cap="Tianjin Foreign Studies University. Pre-admission, Chinese language program." aria-label="View letter: Tianjin Foreign Studies University"><img src="assets/letters/thumbs/5.jpg" width="480" height="679" alt="Letter: Tianjin Foreign Studies University" loading="lazy"></button><div class="ct">Tianjin Foreign Studies University</div><div class="cs">Pre-admission, Chinese language program.</div><div class="cl"><button class="lb link" data-src="assets/letters/5-letter.jpg" data-cap="Tianjin Foreign Studies University. Pre-admission, Chinese language program.">View image</button></div></div></div>
+  <p class="note">The recommendation letters are on the <a href="#/letters">Letters</a> page.</p>
+</section>
+
+<!-- CARTAS -->
+<section id="letters" data-t="Letters">
+  <h1>Letters</h1>
+  <p class="lead">Recommendation letters and certificates</p>
+  <p>Documents issued by researchers and instructors with whom I have worked or studied. Each letter can be enlarged or opened as a PDF.</p>
+  <div class="cards"><div class="card"><button class="lb th" data-src="assets/letters/6-letter.jpg" data-cap="J. Matthew Franklin, PhD. Stanford University, Department of Genetics. Recommendation for the one-year Chinese language program." aria-label="View letter: J. Matthew Franklin, PhD"><img src="assets/letters/thumbs/6.jpg" width="480" height="621" alt="Letter: J. Matthew Franklin, PhD" loading="lazy"></button><div class="ct">J. Matthew Franklin, PhD</div><div class="cs">Stanford University, Department of Genetics. Recommendation for the one-year Chinese language program.</div><div class="cl"><button class="lb link" data-src="assets/letters/6-letter.jpg" data-cap="J. Matthew Franklin, PhD. Stanford University, Department of Genetics. Recommendation for the one-year Chinese language program.">View image</button></div></div><div class="card"><button class="lb th" data-src="assets/letters/7-letter.jpg" data-cap="Haohua Chen. UADY Confucius Institute. Recommendation for the CSC scholarship and the Chinese language program, January 7, 2026." aria-label="View letter: Haohua Chen"><img src="assets/letters/thumbs/7.jpg" width="480" height="621" alt="Letter: Haohua Chen" loading="lazy"></button><div class="ct">Haohua Chen</div><div class="cs">UADY Confucius Institute. Recommendation for the CSC scholarship and the Chinese language program, January 7, 2026.</div><div class="cl"><button class="lb link" data-src="assets/letters/7-letter.jpg" data-cap="Haohua Chen. UADY Confucius Institute. Recommendation for the CSC scholarship and the Chinese language program, January 7, 2026.">View image</button></div></div><div class="card"><a class="th" href="assets/rec/carta-1.pdf" target="_blank" rel="noopener"><img src="assets/rec/thumbs/1.jpg" width="480" height="679" alt="Letter: Dr. Rodrigo Rubí Castellanos" loading="lazy"></a><div class="ct">Dr. Rodrigo Rubí Castellanos</div><div class="cs">CIR Dr. Hideyo Noguchi, UADY. Recommendation for the Clubes de Ciencia México remote research program, April 22, 2026.</div><div class="cl"><a href="assets/rec/carta-1.pdf" target="_blank" rel="noopener">Open PDF</a></div></div><div class="card"><a class="th" href="assets/rec/carta-2.pdf" target="_blank" rel="noopener"><img src="assets/rec/thumbs/2.jpg" width="480" height="679" alt="Letter: Research stay certificate" loading="lazy"></a><div class="ct">Research stay certificate</div><div class="cs">CIR Dr. Hideyo Noguchi, UADY. 2026 short-term research stay, April 22, 2026.</div><div class="cl"><a href="assets/rec/carta-2.pdf" target="_blank" rel="noopener">Open PDF</a></div></div></div>
+  <p class="note">The pre-admission letters from Chinese universities are in <a href="#/china">Chinese Language and Culture</a>.</p>
+</section>
+
+<!-- LABORATORIO -->
+<section id="laboratory" data-t="Laboratory">
+  <h1>Laboratory</h1>
+  <p class="lead">Photographic record of techniques, equipment, and preparations from my coursework and research stays</p>
+  <div class="gal"><figure><button class="lb" data-src="assets/gallery/1-photo.jpg" data-cap="Figure 1. Fluorescence microscopy image viewed on a screen." aria-label="Enlarge figure 1"><img src="assets/gallery/thumbs/1.jpg" width="640" height="480" alt="Fluorescence microscopy image viewed on a screen." loading="lazy"></button><figcaption><b>Figure 1.</b> Fluorescence microscopy image viewed on a screen.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/2-photo.jpg" data-cap="Figure 2. Gel viewed in the image documentation system." aria-label="Enlarge figure 2"><img src="assets/gallery/thumbs/2.jpg" width="640" height="360" alt="Gel viewed in the image documentation system." loading="lazy"></button><figcaption><b>Figure 2.</b> Gel viewed in the image documentation system.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/3-photo.jpg" data-cap="Figure 3. Band analysis of a gel in the documentation software." aria-label="Enlarge figure 3"><img src="assets/gallery/thumbs/3.jpg" width="640" height="360" alt="Band analysis of a gel in the documentation software." loading="lazy"></button><figcaption><b>Figure 3.</b> Band analysis of a gel in the documentation software.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/4-photo.jpg" data-cap="Figure 4. Vertical electrophoresis chamber." aria-label="Enlarge figure 4"><img src="assets/gallery/thumbs/4.jpg" width="640" height="1138" alt="Vertical electrophoresis chamber." loading="lazy"></button><figcaption><b>Figure 4.</b> Vertical electrophoresis chamber.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/5-photo.jpg" data-cap="Figure 5. Preparation observed under a light microscope." aria-label="Enlarge figure 5"><img src="assets/gallery/thumbs/5.jpg" width="640" height="1138" alt="Preparation observed under a light microscope." loading="lazy"></button><figcaption><b>Figure 5.</b> Preparation observed under a light microscope.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/6-photo.jpg" data-cap="Figure 6. Stained blood smear observed under the microscope." aria-label="Enlarge figure 6"><img src="assets/gallery/thumbs/6.jpg" width="640" height="1138" alt="Stained blood smear observed under the microscope." loading="lazy"></button><figcaption><b>Figure 6.</b> Stained blood smear observed under the microscope.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/7-photo.jpg" data-cap="Figure 7. Tick observed under the microscope." aria-label="Enlarge figure 7"><img src="assets/gallery/thumbs/7.jpg" width="640" height="1138" alt="Tick observed under the microscope." loading="lazy"></button><figcaption><b>Figure 7.</b> Tick observed under the microscope.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/8-photo.jpg" data-cap="Figure 8. Bacterial culture on solid medium." aria-label="Enlarge figure 8"><img src="assets/gallery/thumbs/8.jpg" width="640" height="1138" alt="Bacterial culture on solid medium." loading="lazy"></button><figcaption><b>Figure 8.</b> Bacterial culture on solid medium.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/9-photo.jpg" data-cap="Figure 9. Spectrophotometer used in laboratory practicals." aria-label="Enlarge figure 9"><img src="assets/gallery/thumbs/9.jpg" width="640" height="1138" alt="Spectrophotometer used in laboratory practicals." loading="lazy"></button><figcaption><b>Figure 9.</b> Spectrophotometer used in laboratory practicals.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/10-photo.jpg" data-cap="Figure 10. Isolation of bacterial colonies on an agar plate." aria-label="Enlarge figure 10"><img src="assets/gallery/thumbs/10.jpg" width="640" height="1138" alt="Isolation of bacterial colonies on an agar plate." loading="lazy"></button><figcaption><b>Figure 10.</b> Isolation of bacterial colonies on an agar plate.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/11-photo.jpg" data-cap="Figure 11. iCycler thermal cycler (Bio-Rad) while programming a PCR run." aria-label="Enlarge figure 11"><img src="assets/gallery/thumbs/11.jpg" width="640" height="1138" alt="iCycler thermal cycler (Bio-Rad) while programming a PCR run." loading="lazy"></button><figcaption><b>Figure 11.</b> iCycler thermal cycler (Bio-Rad) while programming a PCR run.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/12-photo.jpg" data-cap="Figure 12. Laboratory setup with flasks and condensers." aria-label="Enlarge figure 12"><img src="assets/gallery/thumbs/12.jpg" width="640" height="1138" alt="Laboratory setup with flasks and condensers." loading="lazy"></button><figcaption><b>Figure 12.</b> Laboratory setup with flasks and condensers.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/13-photo.jpg" data-cap="Figure 13. Spectrophotometer with control keypad." aria-label="Enlarge figure 13"><img src="assets/gallery/thumbs/13.jpg" width="640" height="1138" alt="Spectrophotometer with control keypad." loading="lazy"></button><figcaption><b>Figure 13.</b> Spectrophotometer with control keypad.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/14-photo.jpg" data-cap="Figure 14. Agarose gel under ultraviolet light." aria-label="Enlarge figure 14"><img src="assets/gallery/thumbs/14.jpg" width="640" height="1138" alt="Agarose gel under ultraviolet light." loading="lazy"></button><figcaption><b>Figure 14.</b> Agarose gel under ultraviolet light.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/15-photo.jpg" data-cap="Figure 15. Series of tubes for biochemical tests." aria-label="Enlarge figure 15"><img src="assets/gallery/thumbs/15.jpg" width="640" height="360" alt="Series of tubes for biochemical tests." loading="lazy"></button><figcaption><b>Figure 15.</b> Series of tubes for biochemical tests.</figcaption></figure><figure><button class="lb" data-src="assets/gallery/16-photo.jpg" data-cap="Figure 16. Liquid chromatography (HPLC) system." aria-label="Enlarge figure 16"><img src="assets/gallery/thumbs/16.jpg" width="640" height="1138" alt="Liquid chromatography (HPLC) system." loading="lazy"></button><figcaption><b>Figure 16.</b> Liquid chromatography (HPLC) system.</figcaption></figure></div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" data-t="Curriculum">
+  <h1>Curriculum</h1>
+  <p class="lead">Full PDF version and summary of skills</p>
+  <a class="btn" href="assets/cv/CV_Hector_Pool_ES.pdf" target="_blank" rel="noopener">Download CV in Spanish (PDF)</a>
+  <a class="btn" href="assets/cv/CV_Hector_Pool_EN.pdf" target="_blank" rel="noopener">Download CV in English (PDF)</a>
+  <h2>Languages</h2>
+  <div class="props">
+    <div><span class="k">Spanish</span><span>Native</span></div>
+    <div><span class="k">English</span><span>Advanced, academic proficiency</span></div>
+    <div><span class="k">Mandarin Chinese</span><span>Intermediate, HSK Level 3</span></div>
+  </div>
+  <h2>Technical and laboratory skills</h2>
+  <div class="props">
+    <div><span class="k">Laboratory</span><span>DNA/RNA extraction, nucleic acid quantification (spectrophotometry), RT-PCR, allele-specific PCR, agarose and polyacrylamide gel electrophoresis, bacterial biochemical identification.</span></div>
+    <div><span class="k">Software & IT</span><span>Python, HTML/CSS/JS, Graphviz, and Linux (Debian 13).</span></div>
+    <div><span class="k">Tool development</span><span>Web applications (HTML/CSS/JS, Python) to organize and analyze laboratory data.</span></div>
+    <div><span class="k">Academic</span><span>Scientific literature review, forensic methodology, intercultural communication, and academic writing.</span></div>
+  </div>
+</section>
+
+<p class="foot" id="foot">Héctor Jesús Pool García &middot; Last updated: November 2026</p>
+</main>
+</div>
+
+<dialog id="lbx"><button type="button" id="lbc">Close</button><img id="lbi" alt=""><p id="lbp"></p></dialog>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section')),links=[].slice.call(document.querySelectorAll('nav a')),side=document.getElementById('side'),menu=document.getElementById('menu');
+  function show(){
+    var id=(location.hash.replace(/^#\/?/,'')||'home'),s=document.getElementById(id);
+    if(!s||s.tagName!=='SECTION'){id='home';s=document.getElementById(id)}
+    secs.forEach(function(x){x.classList.toggle('on',x===s)});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.p===id)});
+    document.title=(id==='home'?'':s.dataset.t+' · ')+'Héctor Jesús Pool García';
+    window.scrollTo(0,0);side.classList.remove('open');menu.setAttribute('aria-expanded','false');
+  }
+  window.addEventListener('hashchange',show);show();
+  menu.addEventListener('click',function(){var o=side.classList.toggle('open');menu.setAttribute('aria-expanded',o)});
+  var d=document.getElementById('lbx'),im=document.getElementById('lbi'),p=document.getElementById('lbp');
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.lb');
+    if(b){im.src=b.dataset.src;im.alt=b.dataset.cap||'';p.textContent=b.dataset.cap||'';if(d.showModal)d.showModal();else window.open(b.dataset.src)}
+    else if(e.target===d||e.target.id==='lbc')d.close();
+  });
+})();
+</script>
+</body>
+</html>
